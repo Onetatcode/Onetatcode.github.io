@@ -29,7 +29,7 @@ Results: The scan identified three open ports:
 443/tcp (SSL/HTTP): Apache httpd
 ![Nmap Scan Results](/assets/img/r-robot/nmap.png)
 
-2.2. Web Directory Enumeration
+### 2.2. Web Directory Enumeration
 To identify hidden directories and files, we utilized Gobuster against the target web server using the directory-list-2.3-small.txt wordlist.
 
 Command:
@@ -40,8 +40,8 @@ Findings: Gobuster revealed several critical paths, including /login, /wp-login,
 
 ![Gobuster Scan Results](/assets/img/r-robot/gobuster.png)
 
-3. Web Exploitation & Initial Access
-3.1. Retrieving Key 1
+## 3. Web Exploitation & Initial Access
+### 3.1. Retrieving Key 1
 Upon inspecting the /robots.txt file manually, two interesting entries were discovered: fsocity.dic and key-1-of-3.txt.
 
 ![Robot-text](/assets/img/r-robot/robots-txt.png)
@@ -59,7 +59,7 @@ curl http://[Target_IP]/fsocity.dic > dictionary.txt
 
 ![Nmap Scan Results](/assets/img/r-robot/dict.png)
 
-3.2. Credential Harvesting
+### 3.2. Credential Harvesting
 Navigating to the /license page revealed a base64 encoded string: ZWxsaW90OkVSMjgtMDY1Mgo=.
 
 ![Nmap Scan Results](/assets/img/r-robot/dict-inspect.png)
@@ -72,7 +72,7 @@ Password: ER28-0652
 
 ![Nmap Scan Results](/assets/img/r-robot/cyberchef.png)
 
-3.3. WordPress Exploitation
+### 3.3. WordPress Exploitation
 With the credentials elliot:ER28-0652, we successfully logged into the WordPress dashboard at /wp-login.php.
 
 ![Nmap Scan Results](/assets/img/r-robot/dashboard.png)
@@ -89,13 +89,14 @@ By visiting the 404 page, the payload executed, granting us a reverse shell as t
 
 ![Nmap Scan Results](/assets/img/r-robot/netcat-shell.png)
 
-4. Privilege Escalation
-4.1. Shell Stabilization
+## 4. Privilege Escalation
+### 4.1. Shell Stabilization
 To interact with the system more effectively, we upgraded the shell using Python:
 
 Bash
 python -c 'import pty; pty.spawn("/bin/sh")'
-4.2. Horizontal Escalation (daemon -> robot)
+
+### 4.2. Horizontal Escalation (daemon -> robot)
 
 ![Nmap Scan Results](/assets/img/r-robot/daemon.png)
 
@@ -111,7 +112,7 @@ Using these credentials, we switched users to robot and retrieved the second fla
 
 ![Nmap Scan Results](/assets/img/r-robot/f2.png)
 
-4.3. Vertical Escalation (robot -> root)
+### 4.3. Vertical Escalation (robot -> root)
 To escalate to root, we searched for files with the SUID bit set using the following command:
 
 Bash
@@ -124,8 +125,8 @@ Bash
 nmap --interactive
 nmap> !sh
 # whoami
-root
+### root
 With root access secured, we retrieved the final flag. Key 3: 0478****************************
 
-Conclusion
+## Conclusion
 This room provided excellent practice in web enumeration and SUID privilege escalation. The combination of WordPress vulnerability assessment and Linux permission abuse makes it a classic challenge for sharpening Blue and Red team skills.
