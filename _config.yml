@@ -14,12 +14,12 @@ timezone:
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Chirpy # the main title
+title: Muhammad Ali # the main title
 
-tagline: A text-focused Jekyll theme # it will display as the subtitle
+tagline: My Personal Blog # it will display as the subtitle
 
 description: >- # used by seo meta and the atom feed
-  A minimal, responsive and feature-rich Jekyll theme for technical writing.
+ blog, Ontatcode, github
 
 # Fill in the protocol & hostname for your site.
 # E.g. 'https://username.github.io', note that it does not end with a '/'.
@@ -27,7 +27,7 @@ url: "https://Onetatcode.github.io"
 baseurl: "/OnetatH4ck.github.io" 
 
 github:
-  username: github_username # change to your GitHub username
+  username: Onetatcode # change to your GitHub username
 
 twitter:
   username: twitter_username # change to your Twitter username
@@ -99,7 +99,7 @@ theme_mode: # [light | dark]
 cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar:
+avatar: https://user-images.githubusercontent.com/74038190/225813708-98b745f2-7d22-48cf-9150-083f1b00d6c9.gif
 
 # The URL of the site-wide social preview image used in SEO `og:image` meta tag.
 # It can be overridden by a customized `page.image` in front matter.
