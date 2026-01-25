@@ -56,8 +56,13 @@ We also downloaded the dictionary file fsocity.dic using curl for later use in p
 
 Bash
 curl http://[Target_IP]/fsocity.dic > dictionary.txt
+
+![Nmap Scan Results](/assets/img/r-robot/dict.png)
+
 3.2. Credential Harvesting
 Navigating to the /license page revealed a base64 encoded string: ZWxsaW90OkVSMjgtMDY1Mgo=.
+
+![Nmap Scan Results](/assets/img/r-robot/dict-inspect.png)
 
 Using CyberChef, we decoded this string to reveal valid credentials:
 
@@ -65,16 +70,24 @@ User: elliot
 
 Password: ER28-0652
 
+![Nmap Scan Results](/assets/img/r-robot/cyberchef.png)
+
 3.3. WordPress Exploitation
 With the credentials elliot:ER28-0652, we successfully logged into the WordPress dashboard at /wp-login.php.
+
+![Nmap Scan Results](/assets/img/r-robot/dashboard.png)
 
 As an administrator, we navigated to Appearance > Editor and selected the 404.php template. We replaced the existing code with a PHP reverse shell (e.g., PentestMonkey), configured with our local IP and listening port.
 
 We started a Netcat listener on our attack machine:
 
+![Nmap Scan Results](/assets/img/r-robot/netcat.png)
+
 Bash
 nc -lvnp 4444
 By visiting the 404 page, the payload executed, granting us a reverse shell as the daemon user.
+
+![Nmap Scan Results](/assets/img/r-robot/netcat-shell.png)
 
 4. Privilege Escalation
 4.1. Shell Stabilization
@@ -83,6 +96,9 @@ To interact with the system more effectively, we upgraded the shell using Python
 Bash
 python -c 'import pty; pty.spawn("/bin/sh")'
 4.2. Horizontal Escalation (daemon -> robot)
+
+![Nmap Scan Results](/assets/img/r-robot/daemon.png)
+
 We discovered a password hash file in /home/robot named password.raw-md5 containing the hash c3fcd3d76192e4007dfb496cca67e13b.
 
 We cracked this hash using John the Ripper and the rockyou.txt wordlist:
@@ -92,6 +108,8 @@ john --format=raw-md5 --wordlist=/usr/share/wordlists/rockyou.txt secret
 Cracked Password: abcdefghijklmnopqrstuvwxyz
 
 Using these credentials, we switched users to robot and retrieved the second flag. Key 2: 822c****************************
+
+![Nmap Scan Results](/assets/img/r-robot/f2.png)
 
 4.3. Vertical Escalation (robot -> root)
 To escalate to root, we searched for files with the SUID bit set using the following command:
