@@ -3,9 +3,6 @@ title: "Project: Building a Home SOC Lab with Wazuh & ELK"
 date: 2026-01-25 10:00:00 +0500
 categories: [Projects, SOC]
 tags: [wazuh, elk, defensive-security, blue-team]
-image:
-  path: /assets/img/headers/soc-lab.jpg # You can add an image later
-  alt: SOC Lab Architecture
 ---
 
 ## Project Overview
