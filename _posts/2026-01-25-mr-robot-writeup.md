@@ -27,6 +27,7 @@ Results: The scan identified three open ports:
 80/tcp (HTTP): Apache httpd
 
 443/tcp (SSL/HTTP): Apache httpd
+![Nmap Scan Results](/assets/img/mr-robot/nmap.png)
 
 2.2. Web Directory Enumeration
 To identify hidden directories and files, we utilized Gobuster against the target web server using the directory-list-2.3-small.txt wordlist.
@@ -37,11 +38,19 @@ Bash
 gobuster dir -u http://[hostname] -w /usr/share/wordlists/dirbuster/directory-list-2.3-small.txt -t 100 -q -o gobuster_output.txt
 Findings: Gobuster revealed several critical paths, including /login, /wp-login, /admin, /license, and /robots.
 
+![Nmap Scan Results](/assets/img/mr-robot/gobuster.png)
+
 3. Web Exploitation & Initial Access
 3.1. Retrieving Key 1
-Upon inspecting the /robots.txt file manually, two interesting entries were discovered: fsocity.dic and key-1-of-3.txt. By navigating to http://[Target_IP]/key-1-of-3.txt, we successfully retrieved the first flag.
+Upon inspecting the /robots.txt file manually, two interesting entries were discovered: fsocity.dic and key-1-of-3.txt.
+
+![Nmap Scan Results](/assets/img/mr-robot/robots-txt.png)
+
+By navigating to http://[Target_IP]/key-1-of-3.txt, we successfully retrieved the first flag.
 
 Key 1: 0734****************************
+
+![Nmap Scan Results](/assets/img/mr-robot/f1.png)
 
 We also downloaded the dictionary file fsocity.dic using curl for later use in password cracking.
 
