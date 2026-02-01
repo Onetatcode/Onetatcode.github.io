@@ -1,0 +1,22 @@
+/* --- Terminal Look for CLI Blocks --- */
+.language-bash, .language-console, .language-powershell, .language-cli {
+  background: #1c1c1c !important;
+  color: #d4d4d4 !important;
+  border-radius: 8px !important;
+  padding-top: 35px !important;
+  position: relative;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  margin-bottom: 1.5rem;
+  display: block;
+}
+
+.language-bash::before, .language-console::before, .language-powershell::before, .language-cli::before {
+  content: "● ● ●";
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: #ff5f56; /* Red dot */
+  text-shadow: 18px 0 #ffbd2e, 36px 0 #27c93f; /* Yellow and Green dots */
+}
