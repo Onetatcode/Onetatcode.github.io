@@ -1,0 +1,36 @@
+---
+---
+
+/* 1. Import the main Chirpy theme styles first */
+@import "jekyll-theme-chirpy";
+
+/* 2. Add your Custom Terminal CSS below */
+div[class^='language-'], figure[class^='language-'] {
+  background: #1e1e1e !important; /* Dark Terminal Background */
+  border-radius: 8px !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
+  margin-bottom: 1.5rem !important;
+  
+  /* This creates space at the top for the dots */
+  padding-top: 35px !important; 
+  position: relative !important;
+}
+
+/* The Red, Yellow, Green Dots */
+div[class^='language-']::before, figure[class^='language-']::before {
+  content: "● ● ●";
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  font-size: 12px;
+  letter-spacing: 4px; /* Space between dots */
+  color: #ff5f56; /* Red dot */
+  text-shadow: 20px 0 #ffbd2e, 40px 0 #27c93f; /* Yellow and Green dots */
+  z-index: 10;
+}
+
+/* Fix the code text color and position */
+div[class^='language-'] pre, figure[class^='language-'] pre {
+  margin: 0 !important;
+  padding: 10px 15px !important;
+}
