@@ -1,7 +1,7 @@
 ---
 title: "OverTheWire Bandit Walkthrough"
 date:  2026-05-01
-categories: [Writeup]
+categories: [CTF, OverTheWire]
 tags: [bandit walkthrugh, OverTheWrite, Wargames]
 ---
 
