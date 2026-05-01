@@ -2,13 +2,13 @@
 ---
 
 /*
- * Chirpy is a gem-based theme.
- * With Jekyll >= 4, theme styles are exposed under:
- *   - "jekyll-theme-chirpy"
- *   - "jekyll-theme-chirpy.scss"
- * The latter is the canonical entrypoint for Sass.
+ * Fix for GitHub Pages build: the Chirpy theme's Sass entrypoint isn't
+ * available to Jekyll's Sass converter in this repo setup.
+ *
+ * Instead, use the compiled theme CSS from the gem and layer custom styles.
  */
-@import "jekyll-theme-chirpy.scss";
+
+@import url("/assets/css/jekyll-theme-chirpy.css");
 
 /* Custom Terminal CSS */
 div[class^='language-'], figure[class^='language-'] {
