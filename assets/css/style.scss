@@ -1,18 +1,24 @@
 ---
 ---
 
-/* 1. Import the main Chirpy theme styles first */
-@import "jekyll-theme-chirpy";
+/*
+ * Chirpy is a gem-based theme.
+ * With Jekyll >= 4, theme styles are exposed under:
+ *   - "jekyll-theme-chirpy"
+ *   - "jekyll-theme-chirpy.scss"
+ * The latter is the canonical entrypoint for Sass.
+ */
+@import "jekyll-theme-chirpy.scss";
 
-/* 2. Add your Custom Terminal CSS below */
+/* Custom Terminal CSS */
 div[class^='language-'], figure[class^='language-'] {
   background: #1e1e1e !important; /* Dark Terminal Background */
   border-radius: 8px !important;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
   margin-bottom: 1.5rem !important;
-  
+
   /* This creates space at the top for the dots */
-  padding-top: 35px !important; 
+  padding-top: 35px !important;
   position: relative !important;
 }
 
